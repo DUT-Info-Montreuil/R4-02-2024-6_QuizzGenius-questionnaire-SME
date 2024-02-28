@@ -1,0 +1,3 @@
+dans ce package on met toutes les classes qui permettent de représenter les objets metier (DTO)
+et les objets représentant les (BO)
+

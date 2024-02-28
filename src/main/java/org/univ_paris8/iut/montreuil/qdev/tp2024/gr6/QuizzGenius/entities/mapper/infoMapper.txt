@@ -1,0 +1,1 @@
+c'est ici qu'on va mettre les classes pour  mettre en lien les BO et DTO
