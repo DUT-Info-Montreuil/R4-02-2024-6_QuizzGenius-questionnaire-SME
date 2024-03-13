@@ -1,18 +1,20 @@
 package org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto;
 
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Enum.Langue;
+
 import java.util.Objects;
 
 public class QuestionDTO {
     private int idQuestion;
     private int idQuestionnaire ;
-    private Enum<Langue> langue;
+    private Langue langue;
     private String libelleQuestion;
     private String reponse;
     private int difficulte;
     private String explication;
     private String lienSource;
 
-    public QuestionDTO(int idQuestion, int idQuestionnaire, Enum<Langue> langue, String libelleQuestion, String reponse, int difficulte, String explication, String lienSource) {
+    public QuestionDTO(int idQuestion, int idQuestionnaire,Langue langue, String libelleQuestion, String reponse, int difficulte, String explication, String lienSource) {
         this.idQuestion = idQuestion;
         this.idQuestionnaire = idQuestionnaire;
         this.langue = langue;
@@ -31,7 +33,7 @@ public class QuestionDTO {
         return idQuestionnaire;
     }
 
-    public Enum<Langue> getLangue() {
+    public Langue getLangue() {
         return langue;
     }
 
@@ -63,7 +65,7 @@ public class QuestionDTO {
         this.idQuestionnaire = idQuestionnaire;
     }
 
-    public void setLangue(Enum<Langue> langue) {
+    public void setLangue(Langue langue) {
         this.langue = langue;
     }
 
