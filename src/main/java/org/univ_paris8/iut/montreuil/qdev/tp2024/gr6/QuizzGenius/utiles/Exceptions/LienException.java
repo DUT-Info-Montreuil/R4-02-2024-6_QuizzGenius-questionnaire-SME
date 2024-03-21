@@ -4,4 +4,7 @@ public class LienException extends Exception{
     public LienException(String errorMessage) {
         super(errorMessage);
     }
+    public LienException() {
+        super();
+    }
 }

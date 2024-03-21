@@ -4,4 +4,7 @@ public class NoStat extends Exception{
     public NoStat(String message) {
         super(message);
     }
+
+    public NoStat() {
+    }
 }
