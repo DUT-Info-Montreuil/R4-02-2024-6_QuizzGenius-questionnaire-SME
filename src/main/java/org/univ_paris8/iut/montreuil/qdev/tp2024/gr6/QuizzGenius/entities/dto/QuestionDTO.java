@@ -14,7 +14,7 @@ public class QuestionDTO {
     private String explication;
     private String lienSource;
 
-    public QuestionDTO(int idQuestion, int idQuestionnaire, Langue langue, String libelleQuestion, String reponse, int difficulte, String explication, String lienSource, String s) {
+    public QuestionDTO(int idQuestion, int idQuestionnaire, Langue langue, String libelleQuestion, String reponse, int difficulte, String explication, String lienSource) {
         this.idQuestion = idQuestion;
         this.idQuestionnaire = idQuestionnaire;
         this.langue = langue;

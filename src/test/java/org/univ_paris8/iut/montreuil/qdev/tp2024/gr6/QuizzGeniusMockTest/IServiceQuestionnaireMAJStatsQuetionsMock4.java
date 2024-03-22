@@ -14,9 +14,10 @@ public class IServiceQuestionnaireMAJStatsQuetionsMock4 implements IServiceQuest
     }
 
     @Override
-    public QuestionDTO chargerUneQuestion(int idQuestion) throws NumTropGrandException {
+    public QuestionDTO chargerUneQuestion(int idQuestion, int idQuestionnaire, QuestionnaireDTO q) throws NumTropGrandException {
         return null;
     }
+
 
     @Override
     public String majStatQuestion() throws NoStat {

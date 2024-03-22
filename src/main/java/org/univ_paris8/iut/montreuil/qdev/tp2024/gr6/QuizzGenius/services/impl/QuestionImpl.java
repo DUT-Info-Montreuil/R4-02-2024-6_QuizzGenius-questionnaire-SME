@@ -2,7 +2,7 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.impl;
 
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionnaireDTO;
-import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.interfaces.IQuestionnaire;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.interfaces.IServiceQuestionnaire;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Enum.Langue;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.LienException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NoStat;
@@ -18,7 +18,7 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-public class QuestionImpl implements IQuestionnaire {
+public class QuestionImpl implements IServiceQuestionnaire {
     @Override
     public QuestionnaireDTO chargerListeQuest(String path) throws LienException {
         QuestionnaireDTO questionnaire;
@@ -47,10 +47,12 @@ public class QuestionImpl implements IQuestionnaire {
         q.chargerListeQuest("src/main/java/org/univ_paris8/iut/montreuil/qdev/tp2024/gr6/QuizzGenius/ressources/questionsQuizz_V1.1.csv");
     }
 
+
+
     @Override
     public QuestionDTO chargerUneQuestion(int idQuestion, int idQuestionnaire,QuestionnaireDTO q) throws NumTropGrandException {
-        for( QuestionDTO question :q.getQuestions()){
-            if (question.getIdQuestion()==idQuestion && question.getIdQuestionnaire()==idQuestionnaire) {
+        for (QuestionDTO question : q.getQuestions()) {
+            if (question.getIdQuestion() == idQuestion && question.getIdQuestionnaire() == idQuestionnaire) {
                 return question;
             }
         }

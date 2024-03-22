@@ -5,20 +5,30 @@ import org.junit.Test;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionnaireDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.interfaces.IServiceQuestionnaire;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Enum.Langue;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.LienException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NoStat;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NumTropGrandException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGeniusMockTest.IServiceQuestionnaireChargerListeQuestMock1;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGeniusMockTest.IServiceQuestionnaireChargerListeQuestMock2;
-import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGeniusMockTest.IServiceQuestionnaireExceptionsMock3;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGeniusMockTest.IServiceQuestionnaireChargerUneQuestExp;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGeniusMockTest.IServiceQuestionnaireMAJStatsQuetionsMock4;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class IServiceQuestionnaireTest extends TestCase {
 
     IServiceQuestionnaire servQuest = new IServiceQuestionnaireChargerListeQuestMock1();
+    QuestionnaireDTO questions2 =  servQuest.chargerListeQuest("src/main/ressources/questionsQuizz_V1.1.csv");
+
+    QuestionDTO question1 = new QuestionDTO(1, 1, Langue.fr  , "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "Tee", 1, "Le joueur peut poser sa balle sur une cheville de bois ou de plastique qui ne peut pas être utilisée en dehors des départs.", "https://fr.wikipedia.org/wiki/Matériel_de_golf");
+
+    public IServiceQuestionnaireTest() throws LienException {
+    }
+
     public void testChargerListeQuest() throws LienException {
 
 
@@ -36,38 +46,45 @@ public class IServiceQuestionnaireTest extends TestCase {
 
     }
 
-    @Test(expected = LienException.class)
     public void testChargerListeQuestException() throws LienException {
-        IServiceQuestionnaire servQuest2 = new IServiceQuestionnaireChargerListeQuestMock1();
-        QuestionnaireDTO questions =  servQuest2.chargerListeQuest("src/main/java/ressources/non.1.csv");
+        assertThrows(LienException.class, () -> {
+            IServiceQuestionnaire servQuest2 = new IServiceQuestionnaireChargerListeQuestMock2();
+            QuestionnaireDTO questions =  servQuest2.chargerListeQuest("src/main/java/ressources/nom.csv");
+
+        });
 
     }
 
     public void testChargerUneQuestion() throws NumTropGrandException {
 
-        assertEquals("De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", servQuest.chargerUneQuestion(1));
+        assertEquals(question1, servQuest.chargerUneQuestion(1,1,questions2));
 
     }
-
-    @Test(expected = NumTropGrandException.class)
 
     public void testChargerUneQuestionException() throws NumTropGrandException {
-        IServiceQuestionnaire servQuest3 = new IServiceQuestionnaireChargerListeQuestMock2();
-        QuestionDTO quest = servQuest3.chargerUneQuestion(1);
+        assertThrows(NumTropGrandException.class, () -> {
+            IServiceQuestionnaire servQuest3 = new IServiceQuestionnaireChargerUneQuestExp();
+            QuestionDTO quest = servQuest3.chargerUneQuestion(1,1,questions2);
+
+        });
 
     }
 
-    @Test(expected = NoStat.class)
     public void testMajStatQuestion() throws NoStat {
-        IServiceQuestionnaire servQuest3 = new IServiceQuestionnaireChargerListeQuestMock2();
-        String maj =  servQuest3.majStatQuestion();
+
+        assertThrows(NoStat.class, () -> {
+            IServiceQuestionnaire servQuest3 = new IServiceQuestionnaireMAJStatsQuetionsMock4();
+            String maj =  servQuest3.majStatQuestion();
+        });
 
     }
 
     @Test(expected = NoStat.class)
     public void testFournirStatsQuestionException() throws NoStat {
-        IServiceQuestionnaire servQuest3 = new IServiceQuestionnaireChargerListeQuestMock1();
-        String stat =  servQuest3.fournirStatsQuestion();
+        assertThrows(NoStat.class, () -> {
+            IServiceQuestionnaire servQuest3 = new IServiceQuestionnaireMAJStatsQuetionsMock4();
+            String stat =  servQuest3.fournirStatsQuestion();
+        });
 
     }
 }

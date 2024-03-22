@@ -3,21 +3,19 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGeniusMockTest;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionnaireDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.interfaces.IServiceQuestionnaire;
-import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Enum.Langue;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.LienException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NoStat;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NumTropGrandException;
 
-public class IServiceQuestionnaireChargerUneQuestionMock3 implements IServiceQuestionnaire {
+public class IServiceQuestionnaireChargerUneQuestExp implements IServiceQuestionnaire {
     @Override
     public QuestionnaireDTO chargerListeQuest(String path) throws LienException {
         return null;
     }
 
     @Override
-    public QuestionDTO chargerUneQuestion(int idQuestion, int idQuestionnaire, QuestionnaireDTO q) throws NumTropGrandException {
-        return new QuestionDTO(1,1, Langue.an, " ", " ", 1, " ", " " );
-
+    public QuestionDTO chargerUneQuestion(int idQuestion,int idQuestionnaire,QuestionnaireDTO q ) throws NumTropGrandException {
+        throw  new NumTropGrandException("Test");
     }
 
     @Override

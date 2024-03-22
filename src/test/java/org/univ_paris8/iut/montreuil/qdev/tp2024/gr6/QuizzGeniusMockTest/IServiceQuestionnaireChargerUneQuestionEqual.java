@@ -8,16 +8,16 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptio
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NoStat;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NumTropGrandException;
 
-public class IServiceQuestionnaireChargerUneQuestionMock3 implements IServiceQuestionnaire {
+public class IServiceQuestionnaireChargerUneQuestionEqual implements IServiceQuestionnaire {
+
     @Override
     public QuestionnaireDTO chargerListeQuest(String path) throws LienException {
         return null;
     }
 
     @Override
-    public QuestionDTO chargerUneQuestion(int idQuestion, int idQuestionnaire, QuestionnaireDTO q) throws NumTropGrandException {
-        return new QuestionDTO(1,1, Langue.an, " ", " ", 1, " ", " " );
-
+    public QuestionDTO chargerUneQuestion(int idQuestion,int idQuestionnaire,QuestionnaireDTO q) throws NumTropGrandException {
+        return new QuestionDTO(1, 1, Langue.fr, "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "Tee", 1, "Le joueur peut poser sa balle sur une cheville de bois ou de plastique qui ne peut pas être utilisée en dehors des départs.", "https://fr.wikipedia.org/wiki/Matériel_de_golf");
     }
 
     @Override
