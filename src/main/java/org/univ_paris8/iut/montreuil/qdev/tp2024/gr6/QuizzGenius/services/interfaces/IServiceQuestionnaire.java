@@ -6,7 +6,9 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptio
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NoStat;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.NumTropGrandException;
 
-public interface IQuestionnaire {
+import java.util.ArrayList;
+
+public interface IServiceQuestionnaire {
 
     public QuestionnaireDTO chargerListeQuest(String path) throws LienException;
     public QuestionDTO chargerUneQuestion(int idQuestion, int idQuestionnaire,QuestionnaireDTO q) throws NumTropGrandException;

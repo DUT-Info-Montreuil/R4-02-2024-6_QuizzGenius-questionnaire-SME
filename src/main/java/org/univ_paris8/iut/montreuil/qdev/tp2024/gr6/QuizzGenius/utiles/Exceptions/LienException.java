@@ -6,4 +6,7 @@ public class LienException extends FileNotFoundException{
     public LienException(String errorMessage) {
         super(errorMessage);
     }
+    public LienException() {
+        super();
+    }
 }

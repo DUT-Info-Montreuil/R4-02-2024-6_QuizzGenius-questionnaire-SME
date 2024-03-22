@@ -5,4 +5,7 @@ public class NumTropGrandException extends Exception{
     public NumTropGrandException(String message) {
         super(message);
     }
+
+    public NumTropGrandException() {
+    }
 }
