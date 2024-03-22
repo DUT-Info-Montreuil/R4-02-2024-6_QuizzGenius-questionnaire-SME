@@ -9,7 +9,7 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptio
 public interface IQuestionnaire {
 
     public QuestionnaireDTO chargerListeQuest(String path) throws LienException;
-    public QuestionDTO chargerUneQuestion(int idQuestion) throws NumTropGrandException;
+    public QuestionDTO chargerUneQuestion(int idQuestion, int idQuestionnaire,QuestionnaireDTO q) throws NumTropGrandException;
     public String majStatQuestion() throws NoStat;
 
     public String fournirStatsQuestion()throws NoStat;
