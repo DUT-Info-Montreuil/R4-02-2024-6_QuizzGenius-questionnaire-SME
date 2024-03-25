@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.entities.dto.QuestionnaireDTO;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.impl.QuestionImpl;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.services.interfaces.IServiceQuestionnaire;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Enum.Langue;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr6.QuizzGenius.utiles.Exceptions.LienException;
@@ -21,18 +22,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IServiceQuestionnaireTest extends TestCase {
 
-    IServiceQuestionnaire servQuest = new IServiceQuestionnaireChargerListeQuestMock1();
-    QuestionnaireDTO questions2 =  servQuest.chargerListeQuest("src/main/ressources/questionsQuizz_V1.1.csv");
+   // IServiceQuestionnaire servQuest = new IServiceQuestionnaireChargerListeQuestMock1();
+   QuestionImpl servQuest= new QuestionImpl();
+    QuestionnaireDTO questions2 =  servQuest.chargerListeQuest("/Users/gazzi/IdeaProjects/R4-02-2024-6_QuizzGenius-questionnaire-SME/src/main/resources/questionsQuizz_V1.1.csv");
 
-    QuestionDTO question1 = new QuestionDTO(1, 1, Langue.fr  , "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "Tee", 1, "Le joueur peut poser sa balle sur une cheville de bois ou de plastique qui ne peut pas être utilisée en dehors des départs.", "https://fr.wikipedia.org/wiki/Matériel_de_golf");
-
-    public IServiceQuestionnaireTest() throws LienException {
+    //QuestionDTO question1 = new QuestionDTO(1, 1, Langue.fr  , "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "Tee", 1, "Le joueur peut poser sa balle sur une cheville de bois ou de plastique qui ne peut pas être utilisée en dehors des départs.", "https://fr.wikipedia.org/wiki/Matériel_de_golf");
+   QuestionDTO question1 = servQuest.chargerUneQuestion(1,1,questions2);
+    public IServiceQuestionnaireTest() throws LienException, NumTropGrandException {
     }
 
     public void testChargerListeQuest() throws LienException {
 
 
-        QuestionnaireDTO questions =  servQuest.chargerListeQuest("src/main/ressources/questionsQuizz_V1.1.csv");
+        QuestionnaireDTO questions =  servQuest.chargerListeQuest("/Users/gazzi/IdeaProjects/R4-02-2024-6_QuizzGenius-questionnaire-SME/src/main/resources/questionsQuizz_V1.1.csv");
 
         //test non vide
         assertTrue(questions.getQuestions() != null);

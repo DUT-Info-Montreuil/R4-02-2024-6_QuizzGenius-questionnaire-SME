@@ -38,13 +38,14 @@ public class QuestionImpl implements IServiceQuestionnaire {
              throw new RuntimeException(e);
          }
          questionnaire = new QuestionnaireDTO(listeQuestion,1);
-        return null;
+        return questionnaire;
 
     }
 
     public static void main(String[] args) throws LienException {
         QuestionImpl q = new QuestionImpl();
-        q.chargerListeQuest("src/main/java/org/univ_paris8/iut/montreuil/qdev/tp2024/gr6/QuizzGenius/ressources/questionsQuizz_V1.1.csv");
+        QuestionnaireDTO questionnaire = q.chargerListeQuest("/Users/gazzi/IdeaProjects/R4-02-2024-6_QuizzGenius-questionnaire-SME/src/main/resources/questionsQuizz_V1.1.csv");
+        System.out.println(questionnaire==null);
     }
 
 
@@ -56,7 +57,7 @@ public class QuestionImpl implements IServiceQuestionnaire {
                 return question;
             }
         }
-        return null;
+        throw new NumTropGrandException("id trop grand ");
     }
 
     @Override

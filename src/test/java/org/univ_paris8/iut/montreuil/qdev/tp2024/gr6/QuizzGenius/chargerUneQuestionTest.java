@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class chargerUneQuestionTest {
     IServiceQuestionnaire servQuest = new QuestionImpl();
     //IServiceQuestionnaire servQuest = new IServiceQuestionnaireChargerListeQuestMock1();
-    QuestionnaireDTO questions2 =  servQuest.chargerListeQuest("/home/etudiants/info/fborgazzi/IdeaProjects/R4-02-2024-6_QuizzGenius-questionnaire-SME/src/main/resources/questionsQuizz_V1.1.csv");
+    QuestionnaireDTO questions2 =  servQuest.chargerListeQuest("/Users/gazzi/IdeaProjects/R4-02-2024-6_QuizzGenius-questionnaire-SME/src/main/resources/questionsQuizz_V1.1.csv");
 
     chargerUneQuestionTest() throws LienException {
     }
